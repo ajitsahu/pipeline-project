@@ -1,11 +1,27 @@
 pipeline {
-    agent any
-
+    agent {
+        label 'master'
+    }
     stages {
-        stage('Build') {
+        stage('PRINT') {
             steps {
-                sh 'touch test.txt'
+                sh 'echo $JOB_NAME'
             }
+        }
+        stage('WRITE') {
+            steps {
+                sh 'echo $BUILD_NUMBER >> build_number'
+            }
+        }
+        stage('READ') {
+            steps {
+                sh 'cat build_number'
+            }
+        }
+    }
+    post {
+        success {
+            archiveArtifacts artifacts: 'build_number', fingerprint: true
         }
     }
 }
