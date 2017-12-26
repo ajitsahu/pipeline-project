@@ -8,9 +8,4 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-           archiveArtifacts artifacts: 'Pipelint-project', fingerprint: true
-        }
-    }
 }
