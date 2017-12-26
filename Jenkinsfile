@@ -9,5 +9,8 @@ pipeline {
         }
     }
     post {
-        archiveArtifacts artifacts: 'Pipelint-project', fingerprint: true
+        always {
+           archiveArtifacts artifacts: 'Pipelint-project', fingerprint: true
+        }
+    }
 }
