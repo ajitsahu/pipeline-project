@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                touch 'test.txt'
+                sh 'touch test.txt'
             }
         }
     }
